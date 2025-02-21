@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Responsive Coffee Website</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo1.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .cart-item-name, .cart-item-price, .cart-item-quantity {
+            margin-right: 10px;
+        }
+        .navbar.active,
+        .search-form.active,
+        .cart-items-container.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .product-item, .cart-table {
+            margin-bottom: 20px;
+        }
+        .cart-table th, .cart-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .checkout-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .centered-header {
+            text-align: center;
+            font-weight: bold;
+        }
+        .centered-header td {
+            text-align: center;
+        }
+        .remove-btn, .empty-cart-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--header section starts -->
+    <header class="header">
+
+        <a href="#" class="logo">
+            <img src="../images/Designer.png" alt="logo" style="background-color:black;width:100px;height:100px;">
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#products">Products</a>
+            <a href="#review">Reviews</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <div class="icons">
+            <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            <div class="fa fa-bars" id="menu-btn"></div>
+        </div>
+
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box" class="fa fa-search"></label>
+        </div>
+
+
+        <div class="cart-items-container">
+            <div class="container">
+                <div id="product-grid">
+                    <div class="txt-heading">
+                        <h1>MENU & PRODUCTS</h1>
+                    </div>
+                    <div id="product-item-container">
+                        <div class="product-item">
+                            <div class="product-item">
+                                <div class="productname">Black Coffee</div>
+                                <div class="price">&#8377;<span>250.00</span></div>
+                            <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+                        <div class="product-item">
+                            <div class="productname">Latte Coffee</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                    
+                        <div class="product-item">
+                            <div class="productname">Cappuccino</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Americano</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                    <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                    
+                        <div class="product-item">
+                            <div class="productname">Espresso</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                    <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+
+                        <div class="product-item">
+                            <div class="productname">Doppio</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                    <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+
+                        <div class="product-item">
+                            <div class="productname">Coratdo</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Red Eye Coffee</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Mocha</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Irish Coffee</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Galo Coffee</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Macchiato</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+                        
+                    
+                        <div class="product-item">
+                            <div class="productname">Kernel Spices Coffee Beans</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Coffee Day Roasted Coffee Beans</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">BEVZILLA Dark Roast Coffee Sachets</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">Winter Espresso Blend</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">SAGAR Skimmed Milk Powder</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                        <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2"><input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)"></div></div>
+
+                        <div class="product-item">
+                            <div class="productname">PATANJALI Cow's Whole Milk Powder</div>
+                            <div class="price">&#8377;<span>250.00</span></div>
+                            <div class="cart-action">
+                                <input type="text" class="product-quantity" name="quantity" value="1" size="2">
+                                <input type="submit" value="Add to Cart" class="add-to-cart" onclick="addToCart(this)">
+                            </div>
+                        </div>
+
+                        <div id="cart-items">
+                            
+                            <table id="cart-table" id="cart-table">
+                                <thead>
+                                    <tr>
+                                        <tr class="centered-header">
+                                            <td colspan="5">CART ITEMS</td>  
+                                    </tr>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-items-body">
+                                    <!-- Cart items will be added here dynamically -->
+                                </tbody>
+                                
+                            </table>
+                           
+
+    <button id="checkout-btn" class="btn" onclick="checkout()">Checkout Now</button>
+    <button class="empty-cart-btn" onclick="emptyCart()">Empty Cart</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--header section ends -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+<!--home section starts-->
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>fresh coffee in the morning</h3>
+        <p>Coffee is the perfect start to your day, providing the energy you need.Start your day with our delicious coffee and get ready to conquer the day!</p>
+        <a href="#menu" class="btn">Get Yours NOW!!</a>
+
+    </div>
+    
+</section>
+
+<!--home section ends-->
+
+
+<!--about section starts-->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+
+    <div class="row">
+
+        <div class="image">
+
+            <img src="../images/about01.jpg" alt="ABOUT">
+        </div>
+
+        <div class="content">
+            <h3>what makes our coffee special?</h3>
+            <p> COFFEE SHOP is a small cafe loactaed at the center of kakinada."Start your day with our irresistible, rich, and aromatic coffee blend, specially crafted for coffee connoisseurs like you. Embrace the aroma, savor the flavor, and conquer the day!<p>
+            <a href="about.html"  target="_blank" rel="noopener noreferrer" class="btn">learn more</a>
+        </div>
+    </div>
+
+
+
+</section>
+<!--about section ends-->
+
+<!--menu section starts-->
+<section class="menu" id="menu">
+    <h1 class="heading"> our <span>menu</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../images/1black-coffee-Photoroom.png" alt="1black-coffee">
+            <h3>Black Coffee</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/2latte.jpeg" alt="2latte">
+            <h3>Latte Coffee</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/3Cappuccino.jpeg" alt="3Cappuccino">
+            <h3>Cappuccino</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/4Americano.jpeg" alt="4Americano">
+            <h3>Americano</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+        
+        <div class="box">
+            <img src="../images/5espresso.jpeg" alt="5Espresso">
+            <h3>Espresso</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/6doppio.jpeg" alt="6doppio">
+            <h3>Doppio</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/7coratdo.jpeg" alt="7coratdo">
+            <h3>Coratdo</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/8RedEyeCoffee.jpeg" alt="8RedEyeCoffee">
+            <h3>Red Eye Coffee</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/9Mocha.jpeg" alt="9Mocha">
+            <h3>Mocha</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/10_IrishCoffee.jpeg" alt="10_IrishCoffee">
+            <h3>Irish Coffee</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/11Galo.jpg" alt="11Galo">
+            <h3>Galo Coffee</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+
+        <div class="box">
+            <img src="../images/12Macchiato.jpeg" alt="12Macchiato">
+            <h3>Macchiato</h3>
+            <div class="price">&#8377; 250/-<span>300/-</span></div>
+        </div>
+    </div>
+
+</section>
+
+<!--menu section ends-->
+
+<section class="products" id="products">
+
+    <h1 class="heading"> our <span>products</span></h1>
+    <div class="box-container">
+        <div class="box">
+            <div class="image">
+                <img src="../images/product1.jpg" alt="product1" style="height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>Kernel Spices Coffee Beans</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../images/product2.jpg" alt="product2" style=" object-position: center ;height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>Coffee Day Roasted Coffee Beans</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../images/product3.jpg" alt="product3" style=" object-position: center ;height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>BEVZILLA Dark Roast Coffee Sachets</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../images/product4.jpg" alt="product4" style=" object-position: center ;height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>Winter Espresso Blend</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../images/product5.jpg" alt="product5" style=" object-position: center ;height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>SAGAR Skimmed Milk Powder</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="../images/product6.jpg" alt="product6" style=" object-position: center ;height: 70px; width:70px">
+            </div>
+            <div class="content">
+                <h3>PATANJALI Cow's Whole Milk Powder</h3>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <div class="price">&#8377; 250/-<span>300/-</span></div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<!--review section starts-->
+
+<section class="review" id="review">
+
+    <h1 class="heading">customer's <span> review </span></h1>
+
+    <div class="box-container">
+        <div class="box">
+            <img src="../images/quotes.jpg" alt="quotes-sign-box" class="quote" style=" border-radius:10%; object-position: center ;height: 70px; width:70px">
+            <p>Great coffee and a wonderful space for meeting up with friends. Don’t bring your laptop cause this place is for coffee and contemplation.</p>
+            <img src="../images/pic1.jpg" alt="dp" class="user">
+            <h3>Suresh Yadav</h3>
+            <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <img src="../images/quotes.jpg" alt="quotes-sign-box" class="quote" style=" border-radius:10%;object-position: center ;height: 70px; width:70px">
+            <p>I really like the atmosphere, good coffee, and nice interior. This is a good place to study or chill with friends. The drinks and foods were all tasty and worthwhile. If you’re up for a fresh place with beautiful architecture then this is a must to visit.</p>
+            <img src="../images/pic2.jpg" alt="dp" class="user">
+            <h3>Rama Chandra Naidu</h3>
+            <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <img src="../images/quotes.jpg" alt="quotes-sign-box" class="quote" style=" border-radius:10%; object-position: center ;height: 70px; width:70px">
+            <p>Will go again.I only popped in to get take-away cappuccinos, but I was struck by how friendly the service was. The cappuccinos were wonderful too! And very well priced.</p>
+            <img src="../images/pic3.jpg" alt="dp" class="user">
+            <h3>Pranavi Reddy</h3>
+            <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+
+        </div>
+    </div>
+
+    </section>
+
+<!--review section ends-->
+
+<!--contact section starts-->
+
+<section class="contact" id="contact">
+   
+    <h1 class="heading">contact<span> us </span></h1>
+
+    <div class="row">
+
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3816.3276557562244!2d82.22833157381824!3d16.958425915023682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3829d1f0493d49%3A0x657de2553a63f38f!2sEATSTREET%20kakinada!5e0!3m2!1sen!2sin!4v1719463966621!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <form action="">
+            <h3>get in touch</h3>
+            <div class="inputBox">
+                <span class="fa fa-envelope">  coffeeshopkkd@gmail.com</span>
+            </div>
+            <div class="inputBox">
+                <span class="fa fa-phone">  1234567890</span>
+            </div>
+            <a href="mailto:coffeeshopkkd@gmail.com?subject=Contact%20Us&body=Hello,%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="btn">contact now</a>
+            
+        </div>
+        
+        </form>
+    </div>
+</section>
+
+<!--contact section ends-->
+
+<!--footer section starts-->
+
+    <section class="footer">
+
+        <div class="share">
+            <a href="https://www.facebook.com/profile.php?id=61561396959694" target="_blank" class="fa fa-facebook-f"></a>
+            <a href="https://www.linkedin.com" target="_blank" class="fa fa-linkedin-square"></a>
+            <a href="https://www.instagram.com/coffeeshop_kkd/?hl=en" target="_blank" class="fa fa-instagram"></a>
+        </div>
+
+        <div class="links">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#menu">menu</a>
+            <a href="#products">products</a>
+            <a href="#review">reviews</a>
+            <a href="#contact">contact</a>
+        </div>
+
+        <div class="credit" style="color: white;">created by <span>Prathima Gorusu</span>|all rights reserved</div>
+
+    </section>
+
+<!--footer section ends-->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="script.js"></script>
+
+</body>
+</html>
